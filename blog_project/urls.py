@@ -14,9 +14,10 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
+from django.contrib import admin  # Import the admin module to enable the admin interface.
+from django.urls import path, include  # Import path for defining URL patterns and include for referencing other URL configurations.
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls),  # Route for the admin interface at the 'admin/' URL.
+    path('api/vi/', include('posts.urls')),  # Include the URL patterns defined in the 'posts' app under the 'api/vi/' path.
 ]
