@@ -19,5 +19,5 @@ from django.urls import path, include  # Import path for defining URL patterns a
 
 urlpatterns = [
     path('admin/', admin.site.urls),  # Route for the admin interface at the 'admin/' URL.
-    path('api/vi/', include('posts.urls')),  # Include the URL patterns defined in the 'posts' app under the 'api/vi/' path.
+    path('api/v1/', include('posts.urls')),  # Include the URL patterns defined in the 'posts' app under the 'api/vi/' path.
 ]
