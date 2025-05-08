@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     
     #3rd party apps
     'rest_framework',
+    'rest_framework.authtoken',#generate token for user authentication
+    'dj_rest_auth',
     
     #loocal apps
     'posts.apps.PostsConfig',
@@ -49,6 +51,13 @@ INSTALLED_APPS = [
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
+    ],
+    
+    #Authentication settings for rest framework
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.SessionAuthentication',
+        #'rest_framework.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ]
 }
 
