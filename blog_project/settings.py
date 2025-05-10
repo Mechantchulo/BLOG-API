@@ -42,6 +42,11 @@ INSTALLED_APPS = [
     #3rd party apps
     'rest_framework',
     'rest_framework.authtoken',#generate token for user authentication
+    #'rest_framework_swagger',#for api documentation
+    'drf_spectacular',  # For OpenAPI schema generation
+    'drf_spectacular_sidecar',  # For serving the OpenAPI schema
+    
+    
     # Third-party apps for authentication and registration
     'allauth',  # Django Allauth for authentication
     'allauth.account',  # Account management with Allauth
@@ -53,6 +58,11 @@ INSTALLED_APPS = [
 ]
 #rest framework settings permissions
 REST_FRAMEWORK = {
+    
+    # Use the default schema generation class
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+
+
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
@@ -63,6 +73,8 @@ REST_FRAMEWORK = {
         #'rest_framework.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
     ]
+    
+    
 }
 
 
@@ -157,3 +169,9 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Emails will 
 
 # Site framework configuration
 SITE_ID = 1  # Required by 'django.contrib.sites' to identify the current site
+
+SPECTACULAR_SETTINGS = {
+    'TITLE': 'Blog API',
+    'DESCRIPTION': 'A web API for creating and deleting blogs',
+    'VERSION': '1.0.0',
+}

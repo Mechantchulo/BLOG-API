@@ -8,6 +8,13 @@ django = "*"
 djangorestframework = "*"
 django-allauth = "*"
 dj-rest-auth = {extras = ["with_social"], version = "*"}
+coreapi = "*"
+pyyaml = "*"
+inflection = "*"
+django-rest-swagger = "*"
+setuptools = "*"
+drf-spectacular = "*"
+drf-spectacular-sidecar = "*"
 
 [dev-packages]
 
