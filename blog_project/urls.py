@@ -22,4 +22,5 @@ urlpatterns = [
     path('api/v1/', include('posts.urls')),  # Include the URL patterns defined in the 'posts' app under the 'api/vi/' path.
     path('api-auth/', include('rest_framework.urls')),  # Include the authentication URLs provided by Django REST framework under the 'api-auth/' path.
     path('api/v1/rest-auth/', include('dj_rest_auth.urls')),  # Include the URL patterns for user authentication provided by 'rest_auth' under the 'api/v1/rest-auth/' path.
+    path('api/v1/rest-auth/registration/', include('dj_rest_auth.registration.urls')),  # Include the URL patterns for user registration provided by 'rest_auth' under the 'api/v1/rest-auth/registration/' path.
 ]

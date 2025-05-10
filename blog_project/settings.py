@@ -37,16 +37,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     
     #3rd party apps
     'rest_framework',
     'rest_framework.authtoken',#generate token for user authentication
-    'dj_rest_auth',
-    
+    # Third-party apps for authentication and registration
+    'allauth',  # Django Allauth for authentication
+    'allauth.account',  # Account management with Allauth
+    'allauth.socialaccount',  # Social account authentication with Allauth
+    'dj_rest_auth.registration',  # REST API registration endpoints
+    'dj_rest_auth',  # REST API authentication endpoints
     #loocal apps
     'posts.apps.PostsConfig',
 ]
-
 #rest framework settings permissions
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
@@ -70,6 +74,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'blog_project.urls'
@@ -83,7 +88,8 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
+ 
+               'django.contrib.messages.context_processors.messages',
             ],
         },
     },
@@ -143,3 +149,11 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#Email settings
+# Email backend configuration for development purposes
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Emails will be printed to the console instead of being sent
+
+# Site framework configuration
+SITE_ID = 1  # Required by 'django.contrib.sites' to identify the current site
